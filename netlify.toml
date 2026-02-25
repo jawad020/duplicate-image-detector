@@ -1,0 +1,25 @@
+[build]
+  # Build command for Next.js
+  command = "npm run build"
+  # Output directory
+  publish = ".next"
+  # Base directory for the build
+  base = "frontend"
+
+# Environment variables (you'll also set these in Netlify dashboard)
+[build.environment]
+  NEXT_PUBLIC_API_URL = "https://duplicate-photo-finder-production.up.railway.app"
+
+# Redirects for Next.js routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for security and CORS
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
